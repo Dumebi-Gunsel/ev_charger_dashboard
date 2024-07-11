@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '.'
 import { HiCalendar, HiChevronDown, HiOutlineMapPin } from 'react-icons/hi2'
 import { Dropdown, Menu, MenuButton, MenuItem, Table, Tooltip } from '@mui/joy'
 import { HiDotsVertical } from 'react-icons/hi'
 import { chargingStations } from '../../data'
 import StatusPill from '../StatusPill'
+import { useLayoutContext } from '../../context/LayoutProvider'
 
 function ChargersTable() {
     const headers = ["Charger", "Outlets", "Status", "Total Sessions", "Total Unique Users", "Total Charging Time"]
+    const {setAddStation} = useLayoutContext();
   return (
     <div className='col-span-4'>
     <Card>
@@ -32,13 +34,13 @@ function ChargersTable() {
                     </MenuButton>
                     <Menu
                         variant="plain">
-                        <MenuItem>Add Charging Station</MenuItem>
+                        <MenuItem onClick={() => setAddStation(true)}>Add Charging Station</MenuItem>
                     </Menu>
                 </Dropdown>
                      
             </div>
         </div>
-        <div className='w-full mt-10 overflow-y-auto h-[190px]'>
+        <div className='w-full mt-5 overflow-y-auto h-[210px]'>
             <Table aria-label="table variants" variant={'plain'} >
                 <thead className='text-sm font-bold font-sans text-gray-500'>
                    <tr > {headers.map((head)=>{

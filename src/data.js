@@ -134,3 +134,147 @@ export const chargingStations = [
         ]
     },
 ]
+
+
+export const chargingSessions = [
+    {
+        id: '10001',
+        time: '8:27am',
+        duration: '00:35:30',
+        chargerType: {
+            name: "Gunsel EV Charger Mark I - Type 1",
+            id: "5M3NCD8W9E7PQXTL1J",
+        },
+        stationType: 'Commercial',
+        powerConsumed: '7.9kW',
+        averagePowerConsumption: {
+            value: '7.7kw/h',
+            percentage: 65,
+        },
+        costPerKwh: {
+            value: '$0.20',
+            rate: 'Day rate',
+        },
+        profit: '$1.6'
+    },
+    {
+        id: '10002',
+        time: '9:30am',
+        duration: '00:40:15',
+        chargerType: {
+            name: "Gunsel EV Charger Mark I - Type 2",
+            id: "3A2LB7TZ5Q8CWXDK6N",
+        },
+        stationType: 'Private',
+        powerConsumed: '8.2kW',
+        averagePowerConsumption: {
+            value: '8.0kw/h',
+            percentage: 70,
+        },
+        costPerKwh: {
+            value: '$0.22',
+            rate: 'Night rate',
+        },
+        profit: '$1.8'
+    },
+    {
+        id: '10003',
+        time: '11:45am',
+        duration: '00:50:20',
+        chargerType: {
+            name: "Gunsel EV Charger Mark II - Type 1",
+            id: "J9V1BR6P4H2YZMFT8W",
+        },
+        stationType: 'Commercial',
+        powerConsumed: '6.5kW',
+        averagePowerConsumption: {
+            value: '6.4kw/h',
+            percentage: 55,
+        },
+        costPerKwh: {
+            value: '$0.18',
+            rate: 'Day rate',
+        },
+        profit: '$1.4'
+    },
+    {
+        id: '10004',
+        time: '1:20pm',
+        duration: '00:25:10',
+        chargerType: {
+            name: "Gunsel EV Charger Mark I - Type 1",
+            id: "5M3NCD8W9E7PQXTL1J",
+        },
+        stationType: 'Private',
+        powerConsumed: '7.0kW',
+        averagePowerConsumption: {
+            value: '6.9kw/h',
+            percentage: 60,
+        },
+        costPerKwh: {
+            value: '$0.19',
+            rate: 'Night rate',
+        },
+        profit: '$1.5'
+    },
+    {
+        id: '10005',
+        time: '3:50pm',
+        duration: '00:35:45',
+        chargerType: {
+            name: "Gunsel EV Charger Mark I - Type 2",
+            id: "3A2LB7TZ5Q8CWXDK6N",
+        },
+        stationType: 'Commercial',
+        powerConsumed: '8.8kW',
+        averagePowerConsumption: {
+            value: '8.5kw/h',
+            percentage: 75,
+        },
+        costPerKwh: {
+            value: '$0.21',
+            rate: 'Day rate',
+        },
+        profit: '$1.7'
+    },
+    {
+        id: '10006',
+        time: '5:05pm',
+        duration: '00:55:00',
+        chargerType: {
+            name: "Gunsel EV Charger Mark II - Type 1",
+            id: "J9V1BR6P4H2YZMFT8W",
+        },
+        stationType: 'Private',
+        powerConsumed: '6.9kW',
+        averagePowerConsumption: {
+            value: '6.8kw/h',
+            percentage: 68,
+        },
+        costPerKwh: {
+            value: '$0.20',
+            rate: 'Night rate',
+        },
+        profit: '$1.9'
+    },
+    {
+        id: '10007',
+        time: '6:30pm',
+        duration: '00:45:30',
+        chargerType: {
+            name: "Gunsel EV Charger Mark I - Type 1",
+            id: "5M3NCD8W9E7PQXTL1J",
+        },
+        stationType: 'Commercial',
+        powerConsumed: '7.5kW',
+        averagePowerConsumption: {
+            value: '7.3kw/h',
+            percentage: 72,
+        },
+        costPerKwh: {
+            value: '$0.23',
+            rate: 'Day rate',
+        },
+        profit: '$1.6'
+    }
+];
