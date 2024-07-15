@@ -278,3 +278,28 @@ export const chargingSessions = [
         profit: '$1.6'
     }
 ];
+
+
+const locations = ['Lefkosa', 'Girne', 'Magusa', 'Iskele', 'Guzelyurt', 'Lefke']
+const chargerTypes = ["Gunsel EV Charger Mark II - Type 2", "Gunsel EV Charger Mark II - Type 1", "Gunsel EV Charger Mark I - Type 2", "Gunsel EV Charger Mark I - Type 1"]
+
+
+// const handleChargerTypesChange = (event) => {
+//     const { value } = event.target;
+//     const { numberOfOutlets, chargerTypes } = formData;
+
+//     let updatedChargerTypes = [...chargerTypes];
+
+//     if (updatedChargerTypes.includes(value)) {
+//       updatedChargerTypes = updatedChargerTypes.filter(type => type !== value);
+//     } else {
+//       if (updatedChargerTypes.length < numberOfOutlets) {
+//         updatedChargerTypes.push(value);
+//       } else {
+//         updatedChargerTypes.shift();
+//         updatedChargerTypes.push(value);
+//       }
+//     }
+
+//     setFormData({ ...formData, chargerTypes: updatedChargerTypes });
+//   };

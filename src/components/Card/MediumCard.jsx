@@ -2,7 +2,8 @@ import React from 'react'
 import Card from '.'
 import { HiDotsVertical } from 'react-icons/hi'
 
-function MediumCard({data, title}) {
+function MediumCard({data, title, apidata}) {
+    
   return (
     <Card>
     <div className='flex flex-col space-y-5 h-[130px]'>
@@ -11,14 +12,14 @@ function MediumCard({data, title}) {
          <HiDotsVertical className='cursor-pointer text-2xl'/>
      </div>
      <div className='flex justify-center space-x-20'>
-         {
-             data.map((itm, _idx)=>{
-                 return <div className='flex flex-col items-center justify-center'>
-                     <p className='font-bold text-3xl'>{itm.amount}</p>
-                     <p className='text-sm font-medium'>{itm.title}</p>
-                 </div>
-             })
-         }
+     <div className='flex flex-col items-center justify-center'>
+        <p className='font-bold text-3xl'>{apidata?.length?? data[0].amount}</p>
+        <p className='text-sm font-medium'>{data[0].title}</p>
+     </div>
+     <div className='flex flex-col items-center justify-center'>
+        <p className='font-bold text-3xl'>{(apidata&&(apidata?.length * 2)) ?? data[1].amount}</p>
+        <p className='text-sm font-medium'>{data[1].title}</p>
+     </div>
      </div>
      </div> 
  </Card>
