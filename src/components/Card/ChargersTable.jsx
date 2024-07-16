@@ -7,7 +7,6 @@ import { chargingStations } from '../../data'
 import StatusPill from '../StatusPill'
 import { useDispatch, useSelector } from 'react-redux'
 import { setModalOpen } from '../../redux/layoutSlice/layoutSlice.js'
-import useWebSocket from 'react-use-websocket';
 
 const WS_URL = 'ws://10.80.0.127:3001/web/dumebi123';
 
