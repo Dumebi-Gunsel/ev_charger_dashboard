@@ -28,13 +28,12 @@ function IncomeCard({ title}) {
             </div>  
             <div className='flex-1'>
                 <LineChart
-                  xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+                  xAxis={[{ data: [1, 2, 3, 5, 8, 10], position:"bottom" }]}
                   series={[
                     {
                       data: [2, 5.5, 2, 8.5, 1.5, 5],
                       color: '#0081AF',
                     },
-                    
                   ]}
                   margin={{left:0,right:0,top:0,bottom:0,}}
                   grid={{horizontal: true }}

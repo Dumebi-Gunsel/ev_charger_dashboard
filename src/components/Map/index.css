@@ -1,0 +1,13 @@
+ .map-container {
+     position: absolute;
+     height: 400px;
+     width: 100%;
+ }
+
+ .marker {
+     background-image: url('/src/assets/icons/charger.png');
+     background-size: cover;
+     width: 40px;
+     height: 40px;
+     cursor: pointer;
+ }

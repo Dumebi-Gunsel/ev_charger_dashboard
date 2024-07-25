@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import { navItems } from '../../data'
 import { HiOutlineBell } from 'react-icons/hi2'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import './index.css'
 
 function Navbar() {
-    const [navIndex, setNavIndex] = useState(0)
+  const navMap = {
+    "/":0,
+    "/charging-stations":1,
+    "/revenue": 2,
+    "/notifications": 3,
+    "/reports":4
+  }
+  const {pathname} = useLocation()
+  const [navIndex, setNavIndex] = useState(navMap[pathname])
     return (
-        <div className='h-screen flex flex-col overflow-y-hidden'>
+        <div className='min-h-screen flex flex-col overflow-y-auto'>
         <div className='bg-black flex justify-between  px-12 text-white relative'>
       <div className='center-self'>
         <h1 className='font-bold'>

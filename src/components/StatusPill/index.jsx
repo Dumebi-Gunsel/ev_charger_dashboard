@@ -2,18 +2,26 @@ import React from 'react'
 
 function StatusPill({status}) {
     const colors = {
-        ONLINE: 'bg-[#0081AF]',
-        AVAILABLE: 'bg-green-500',
-        OUT_OF_SERVICE: 'bg-gray-500',
+      Available: 'bg-[#0081AF]',
+      Charging: 'bg-green-500',
+      Unavailable: 'bg-gray-500',
+      Faulted: "bg-red-500",
     }
     const text = {
-      ONLINE: 'Available',
-      IN_USE: 'In use',
-      OUT_OF_SERVICE: 'Out of service',
+      Available : "Available",
+      Preparing : "Preparing",
+      Charging : "Charging",
+      SuspendedEVSE : "SuspendedEVSE",
+      SuspendedEV : "SuspendedEV",
+      Finishing : "Finishing",
+      Reserved : "Reserved",
+      Unavailable : "Unavailable",
+      Faulted : "Faulted"
+    
   }
   return (
-    <div className={`${colors[status?.code]??colors['OUT_OF_SERVICE']} py-1 px-2 my-2 text-xs font-medium text-white rounded-full w-fit`}>
-        {text[status?.name]??'Out of service'}
+    <div className={`${colors[status?.code]??colors['Unavailable']} py-1 px-2 my-2 text-xs font-medium text-white rounded-full w-fit`}>
+        {text[status?.name]??'Unavailable'}
     </div>
   )
 }

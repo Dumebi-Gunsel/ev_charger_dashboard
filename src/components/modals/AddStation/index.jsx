@@ -1,13 +1,14 @@
 import { Modal , ModalDialog, DialogTitle, DialogContent, Stack,FormControl, FormLabel, Input, Button, Select, Option, Textarea} from '@mui/joy';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setError, setMessage, setModalOpen, setShowSnackbar } from '../../redux/layoutSlice/layoutSlice.js';
-import useStations from '../../hooks/statehooks/useStations.jsx';
-import { useAddChargingStationMutation } from '../../redux/stationsSlice/stationsActions.js';
+import { popModal, setError, setMessage, setShowSnackbar } from '../../../redux/layoutSlice/layoutSlice.js';
+import { useAddChargingStationMutation, useGetChargingStationsQuery } from '../../../redux/stationsSlice/stationsActions.js';
+import { modalMap } from '../index.js';
 
 const initFormState = {
     name: '',
     chargeBoxId: '', 
+    chargeBoxName: '',
     ocppProtocol:'',
     location: {
         latitude: 0,
@@ -41,9 +42,9 @@ const initFormState = {
 
 function AddStation() {
 const dispatch = useDispatch();
-const {modal:{isModalOpen, modalKey}} = useSelector((state)=>state.layoutState)
+const {modals} = useSelector((state)=>state.layoutState)
 const [formData, setFormData] = useState(initFormState)
-const [addChargingStation, { data,status,  isError: isAddStationError, isLoading:isAddingStation, isSuccess: isAddingStationSuccess, error: addStationError}] = useAddChargingStationMutation()
+const [addChargingStation, { data,  isError: isAddStationError, isLoading:isAddingStation, isSuccess: isAddingStationSuccess, error: addStationError}] = useAddChargingStationMutation()
 
 
 
@@ -52,16 +53,19 @@ useEffect(()=>{
         dispatch(setError(addStationError.error.message))
         dispatch(setShowSnackbar(true))
     }if(isAddingStationSuccess){
+      
         setFormData(initFormState)
         dispatch(setMessage(data))
         dispatch(setShowSnackbar(true))
+        dispatch(popModal())
+
     }
 }, [isAddingStationSuccess, isAddingStation, isAddStationError ])
 
 
 
   return (
-    <Modal open={isModalOpen&&modalKey==='addStationModal'} onClose={() => dispatch(setModalOpen(false))} >
+    <Modal open={modals.some((modal)=>modal.key===modalMap.addStationModal)} onClose={() => dispatch(popModal())} >
         <ModalDialog maxWidth={'50vw'} minWidth={'50vw'}>
         <DialogTitle><p className='font-sans'>Add a New Charging Station</p></DialogTitle>
         <DialogContent><p className='font-sans'>Please provide the necessary details for the new charging station.</p></DialogContent>
@@ -76,21 +80,21 @@ useEffect(()=>{
             <Stack spacing={2}>
               <FormControl>
                 <FormLabel><p className='font-sans'>Station Name</p></FormLabel>
-                <Input value={formData.name} placeholder='Station Name' autoFocus required onChange={(e)=>{setFormData({...formData,name:e.target.value})}}/>
+                <Input value={formData.chargeBoxName} placeholder='Station Name' autoFocus required onChange={(e)=>{setFormData({...formData,chargeBoxName:e.target.value})}}/>
               </FormControl>
               <FormControl>
                 <FormLabel><p className='font-sans'>Description</p></FormLabel>
                 <Input value={formData.description} placeholder='Description...' onChange={(e)=>{setFormData({...formData,description:e.target.value})}}/>
               </FormControl>
               <FormControl>
-                <FormLabel><p className='font-sans'>Charge Box ID</p></FormLabel>
-                <Input value={formData.chargeBoxId} placeholder='Charge Box ID' required onChange={(e)=>{setFormData({...formData,chargeBoxId:e.target.value.toUpperCase()})}}/>
+                <FormLabel><p className='font-sans'>Station ID</p></FormLabel>
+                <Input value={formData.chargeBoxId} placeholder='Station ID' required onChange={(e)=>{setFormData({...formData,chargeBoxId:e.target.value.toUpperCase()})}}/>
               </FormControl>
               <FormControl>
                 <FormLabel><p className='font-sans'>OCCP Protocol</p></FormLabel>
                 <Select value={formData.ocppProtocol} placeholder="Select a protocol…" onChange={(event, value)=>{setFormData({...formData,ocppProtocol:value})}}>
                     <Option value={'OCCP 1.6J'}>OCCP 1.6J</Option>
-                    <Option value={'OCCP 2.0J'}>OCCP 2.0J</Option>
+                    <Option disabled value={'OCCP 2.0J'}>OCCP 2.0J</Option>
                 </Select>
               </FormControl>
               
@@ -100,7 +104,9 @@ useEffect(()=>{
                     width:'100%'
                 }}>
                 <Input placeholder='Latitude...' 
-                onChange={(e)=>{setFormData({...formData,location:{...formData.coordinates,latitude:e.target.valueAsNumber}})}}
+                value={formData.location.latitude}
+                required
+                onChange={(e)=>{setFormData({...formData,location:{...formData.location,latitude:e.target.valueAsNumber}})}}
                 type='number'
                 
                 slotProps={{
@@ -116,7 +122,9 @@ useEffect(()=>{
                     width:'100%'
                 }}>
                 <Input placeholder='Longitude...' 
-                onChange={(e)=>{setFormData({...formData,location:{...formData.coordinates,longitude:e.target.valueAsNumber}})}}
+                value={formData.location.longitude}
+                required
+                onChange={(e)=>{setFormData({...formData,location:{...formData.location,longitude:e.target.valueAsNumber}})}}
                 type='number'
                 slotProps={{
                     input: {
@@ -137,10 +145,10 @@ useEffect(()=>{
                     }
                 </Select>
               </FormControl> */}
-              <FormControl>
+              {/* <FormControl>
                 <FormLabel><p className='font-sans'>Note</p></FormLabel>
                 <Textarea value={formData.note} placeholder='Add a note...' minRows={4} onChange={(e)=>{setFormData({...formData,note:e.target.value})}}/>
-              </FormControl>
+              </FormControl> */}
               {/* <FormControl>
                 <FormLabel><p className='font-sans'>No. of outlets</p></FormLabel>
                 <Input type='number' required onChange={(e)=>{setFormData({...formData,numberOfOutlets:parseInt(e.target.value)})}}/>

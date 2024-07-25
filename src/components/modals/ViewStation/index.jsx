@@ -1,12 +1,15 @@
 import { Modal, ModalDialog , DialogTitle, DialogContent, Typography, Stack, Divider, Card, Button} from '@mui/joy'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setError, setMessage, setModalOpen, setShowSnackbar } from '../../redux/layoutSlice/layoutSlice';
-import StatusPill from '../StatusPill';
-import { useDeleteChargingStationMutation } from '../../redux/stationsSlice/stationsActions';
+import { setError, setMessage, setShowSnackbar, popModal, pushModal, setModalConfig  } from '../../../redux/layoutSlice/layoutSlice';
+import StatusPill from '../../StatusPill/index';
+import { useDeleteChargingStationMutation } from '../../../redux/stationsSlice/stationsActions';
+import { modalMap } from '..';
+import EditStationModal from '../EditStationModal';
+import ConfirmActionModal from '../ConfirmActionModal';
 
 function ViewStation() {
-    const { modal: {isModalOpen, modalKey, data: station} } = useSelector((state) => state.layoutState)
+    const { modals } = useSelector((state) => state.layoutState)
     const [deleteChargingStation,{isError:isDeleteError, isLoading:isDeleting, error:deleteError, data:deleteResponse}] = useDeleteChargingStationMutation()
     
     const dispatch = useDispatch()
@@ -17,16 +20,21 @@ function ViewStation() {
                 dispatch(setError(deleteError))
                 dispatch(setShowSnackbar(true))
             }if(deleteResponse){
-                dispatch(setMessage(deleteError))
+                dispatch(setMessage(deleteResponse))
                 dispatch(setShowSnackbar(true))
+                dispatch(popModal())
             }
         }
     }, [isDeleting, isDeleteError, deleteError, dispatch, deleteResponse])
 
+    const station = modals.find(modal=>modal.key===modalMap.viewStationModal)?.data
+
     return (
-        <Modal open={isModalOpen && modalKey === 'viewStationModal'} onClose={() => dispatch(setModalOpen())} >
+        <>
+        
+        <Modal open={modals.some((modal)=>modal.key===modalMap.viewStationModal)}  onClose={() => dispatch(popModal())} >
            <ModalDialog maxWidth={'50vw'} minWidth={'50vw'}> 
-              {station? <> <DialogTitle>View Charger</DialogTitle>
+              {station ? <> <DialogTitle>View Charger</DialogTitle>
               <DialogContent>
                 <p className='font-medium'>{station.name}</p> 
                 <p className='text-xs truncate cursor-default'>Charge Box ID : {station.id}</p>
@@ -58,8 +66,12 @@ function ViewStation() {
                 </Stack>
                 <Divider/>
                 <Stack direction={'row'} justifyContent={'space-between'} spacing={2} sx={{paddingTop:'20px'}}>
-                 <Button disabled={isDeleting} sx={{flex:1}}>Edit Station</Button>
-                 <Button loading={isDeleting} sx={{flex:1}} color='danger' onClick={()=>{}}>Delete Station</Button>
+                 <Button disabled={isDeleting} sx={{flex:1}} onClick={()=>{
+                    dispatch(pushModal({key:modalMap.editStationModal, data: station}))
+                 }}>Edit Station</Button>
+                 <Button loading={isDeleting} sx={{flex:1}} color='danger' onClick={()=>{
+                  deleteChargingStation(station._id)
+                 }}>Delete Station</Button>
                 </Stack>
                 </Stack>
                 </> : 
@@ -70,6 +82,9 @@ function ViewStation() {
                 </div>}
            </ModalDialog>
         </Modal>
+        <EditStationModal/>
+        <ConfirmActionModal/>
+        </>
     )
 }
 

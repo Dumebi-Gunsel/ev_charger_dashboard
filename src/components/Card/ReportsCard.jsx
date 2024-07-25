@@ -40,7 +40,7 @@ function ReportsCard() {
         </div>
         <div className='w-full mt-5 overflow-y-auto h-[230px]'>
             <Table aria-label="table variants" variant={'plain'} 
-            sx={{  '& tr > *:nth-child(3)': { width: '25%' },}}
+            sx={{  '& tr > *:nth-of-type(3)': { width: '25%' },}}
             >
                 <thead className='text-sm font-bold font-sans text-gray-500'>
                    <tr > {headers.map((head)=>{

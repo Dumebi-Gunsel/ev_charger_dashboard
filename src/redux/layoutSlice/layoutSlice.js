@@ -1,16 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { act } from 'react'
 
-
+// {
+//     isModalOpen: false,
+//     modalKey: null,
+//     data: null,
+// },
 const initialState = {
-    modal: {
-        isModalOpen: false,
-        modalKey: null,
-        data: null,
-    },
+    modals: [],
     error: null,
     showSnackbar: false,
     message: null,
     snackColor: null,
+    modalConfig: {
+        text: null,
+        confirmText: null
+    }
 
 }
 
@@ -19,16 +24,20 @@ export const layoutReducer = createSlice({
     name: 'layoutState',
     initialState: initialState,
     reducers: {
-        setModalOpen: (state, action) => {
+        pushModal: (state, action) => {
+            state.modals = [...state.modals, action.payload]
+            console.log("Modal Stack:::::::::::", state.modals);
+        },
+        popModal: (state, action) => {
             if (action.payload) {
-                state.modal.isModalOpen = action.payload.isOpen
-                state.modal.modalKey = action.payload.key
-                state.modal.data = action.payload.data
+                const index = state.modals.findIndex((m) => m.key === action.payload || m === action.payload)
+                if (index) {
+                    state.modals = state.modals.filter((m, i) => index !== i)
+                }
             } else {
-                state.modal.isModalOpen = !state.isModalOpen;
-                state.modal.modalKey = null;
-                state.modal.data = null
+                state.modals.pop()
             }
+
         },
         setShowSnackbar: (state, action) => {
             if (action.payload) {
@@ -53,9 +62,15 @@ export const layoutReducer = createSlice({
             state.error = null
             state.message = null
             state.snackColor = null
+        },
+        setModalConfig: (state, action) => {
+            state.modalConfig = action.payload
+        },
+        clearModalConfig: (state, action) => {
+            state.modalConfig = initialState.modalConfig
         }
     }
 })
 
-export const { setModalOpen, setError, setShowSnackbar, setMessage, resetState, clearSnackbar } = layoutReducer.actions
+export const { pushModal, popModal, setError, setShowSnackbar, setMessage, resetState, clearSnackbar, setModalConfig, clearModalConfig } = layoutReducer.actions
 export default layoutReducer.reducer

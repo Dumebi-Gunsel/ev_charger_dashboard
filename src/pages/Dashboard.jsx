@@ -6,13 +6,14 @@ import ConsumedCard from '../components/Card/ConsumedCard'
 import ChargersTable from '../components/Card/ChargersTable'
 import UtilizationCard from '../components/Card/UtilizationCard'
 import ReportsCard from '../components/Card/ReportsCard'
-import AddStation from '../components/AddStation'
+import AddStation from '../components/modals/AddStation'
 import { useGetChargingStationsQuery } from '../redux/stationsSlice/stationsActions'
 import { useDispatch } from 'react-redux'
 import { CircularProgress, Typography } from '@mui/joy'
 import { setError, setShowSnackbar } from '../redux/layoutSlice/layoutSlice'
 import { setStations } from '../redux/stationsSlice/stationsSlice'
-import ViewStation from '../components/ViewStation'
+import ViewStation from '../components/modals/ViewStation'
+import StationsMapModal from '../components/modals/StationMapModal'
 
 function Dashboard() {
     const titles = ["Managing", "Currently", "Electricity consumed", "Income",]
@@ -45,12 +46,13 @@ function Dashboard() {
         <MediumCard data={usageInfo} title={titles[1]}/>
         <ConsumedCard title={titles[2]}/>
         <IncomeCard title={titles[3]}/>
-        <ChargersTable stations={data}/>
+        <ChargersTable/>
         <UtilizationCard/>
         <ReportsCard/>
     </div>
     <AddStation/>
     <ViewStation/>
+    <StationsMapModal/>
   </>
   )
 }

@@ -8,17 +8,18 @@ import Dashboard from './pages/Dashboard'
 import { Snackbar } from '@mui/joy'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearSnackbar } from './redux/layoutSlice/layoutSlice'
+import ConfirmActionModal from './components/modals/ConfirmActionModal'
+import StationsMap from './components/Map'
 
 function App() {
-const {showSnackbar, error, message, snackColor} = useSelector((state)=>state.layoutState)
+const {showSnackbar, error, message, snackColor, modalConfig} = useSelector((state)=>state.layoutState)
 const dispatch = useDispatch()
-
 return (
   <>
   <Routes>
     <Route path='/' element={ <Navbar/>}>
       <Route index element={<Dashboard/>} />
-      <Route path='charging-stations'  element={<h1>Station</h1>} />
+      <Route path='charging-stations'  element={<h1>Stations</h1>} />
       <Route path='revenue'  element={<h1>Revenue</h1>} />
       <Route path='notifications'  element={<h1>Notifiations</h1>} />
       <Route path='reports'  element={<h1>Reports</h1>} />
@@ -35,6 +36,7 @@ return (
       >
       {error||message}
     </Snackbar>
+    
    </>
   )
 }
