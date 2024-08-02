@@ -10,17 +10,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearSnackbar } from './redux/layoutSlice/layoutSlice'
 import ConfirmActionModal from './components/modals/ConfirmActionModal'
 import StationsMap from './components/Map'
+import SignIn from './pages/auth/SignIn'
+import Stations from './pages/StationPage'
+import Revenue from './pages/RevenuePage'
 
 function App() {
-const {showSnackbar, error, message, snackColor, modalConfig} = useSelector((state)=>state.layoutState)
+const {showSnackbar, error, message, snackColor} = useSelector((state)=>state.layoutState)
 const dispatch = useDispatch()
 return (
   <>
   <Routes>
+    <Route path='/sign-in' element={<SignIn/>}/>
     <Route path='/' element={ <Navbar/>}>
       <Route index element={<Dashboard/>} />
-      <Route path='charging-stations'  element={<h1>Stations</h1>} />
-      <Route path='revenue'  element={<h1>Revenue</h1>} />
+      <Route path='charging-stations'  element={<Stations/>} />
+      <Route path='revenue'  element={<Revenue/>} />
       <Route path='notifications'  element={<h1>Notifiations</h1>} />
       <Route path='reports'  element={<h1>Reports</h1>} />
     </Route>

@@ -14,6 +14,7 @@ import { setError, setShowSnackbar } from '../redux/layoutSlice/layoutSlice'
 import { setStations } from '../redux/stationsSlice/stationsSlice'
 import ViewStation from '../components/modals/ViewStation'
 import StationsMapModal from '../components/modals/StationMapModal'
+import CreateStation from '../components/modals/CreateStation'
 
 function Dashboard() {
     const titles = ["Managing", "Currently", "Electricity consumed", "Income",]
@@ -41,7 +42,7 @@ function Dashboard() {
     </Typography>
   </div>: (
   <>
-    <div className=' bg-slate-200 grid grid-cols-5 gap-6 p-6'>
+    <div className=' bg-slate-200 grid grid-cols-5 gap-6 p-6 overflow-y-auto'>
         <MediumCard data={stationsInfo} title={titles[0]} apidata={data}/>
         <MediumCard data={usageInfo} title={titles[1]}/>
         <ConsumedCard title={titles[2]}/>
@@ -50,7 +51,8 @@ function Dashboard() {
         <UtilizationCard/>
         <ReportsCard/>
     </div>
-    <AddStation/>
+    <CreateStation/>
+    {/* <AddStation/> */}
     <ViewStation/>
     <StationsMapModal/>
   </>

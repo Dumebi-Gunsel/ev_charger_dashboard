@@ -303,3 +303,213 @@ const chargerTypes = ["Gunsel EV Charger Mark II - Type 2", "Gunsel EV Charger M
 
 //     setFormData({ ...formData, chargerTypes: updatedChargerTypes });
 //   };
+
+
+export const stations = [
+    {
+        id: 'EV001',
+        name: 'Downtown EV Station',
+        location: '123 Main St, Cityville',
+        coordinates: { lat: 40.712776, lng: -74.005974 },
+        image: '/assets/images/station1.jpg',
+        totalPowerDispensed: '4500 kWh',
+        chargeRatePerHour: '$15',
+        availableChargers: 4,
+        chargers: [
+            { id: 'CHG001', status: 'Available', type: 'Type 2', powerOutput: '50 kW' },
+            { id: 'CHG002', status: 'Charging', type: 'Type 1', powerOutput: '50 kW' },
+            { id: 'CHG003', status: 'Available', type: 'Type 2', powerOutput: '50 kW' },
+            { id: 'CHG004', status: 'Charging', type: 'Type 3', powerOutput: '50 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV002',
+        name: 'Airport EV Station',
+        location: '456 Airport Rd, Cityville',
+        coordinates: { lat: 34.052235, lng: -118.243683 },
+        image: '/assets/images/station3.jpg',
+        totalPowerDispensed: '3000 kWh',
+        chargeRatePerHour: '$20',
+        availableChargers: 2,
+        chargers: [
+            { id: 'CHG005', status: 'Charging', type: 'Type 2', powerOutput: '100 kW' },
+            { id: 'CHG006', status: 'Available', type: 'Type 3', powerOutput: '100 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV003',
+        name: 'Mall EV Station',
+        location: '789 Shopping Blvd, Cityville',
+        coordinates: { lat: 37.774929, lng: -122.419416 },
+        image: '/assets/images/station2.jpg',
+        totalPowerDispensed: '7000 kWh',
+        chargeRatePerHour: '$10',
+        availableChargers: 3,
+        chargers: [
+            { id: 'CHG007', status: 'Out of Service', type: 'Type 1', powerOutput: '22 kW' },
+            { id: 'CHG008', status: 'Available', type: 'Type 2', powerOutput: '22 kW' },
+            { id: 'CHG009', status: 'Charging', type: 'Type 2', powerOutput: '22 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV004',
+        name: 'University EV Station',
+        location: '101 College St, Cityville',
+        coordinates: { lat: 51.507351, lng: -0.127758 },
+        image: '/assets/images/station4.jpg',
+        totalPowerDispensed: '1200 kWh',
+        chargeRatePerHour: '$12',
+        availableChargers: 1,
+        chargers: [
+            { id: 'CHG010', status: 'Available', type: 'Type 2', powerOutput: '11 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV005',
+        name: 'Hospital EV Station',
+        location: '202 Health Ave, Cityville',
+        coordinates: { lat: 48.856613, lng: 2.352222 },
+        image: '/assets/images/station3.jpg',
+        totalPowerDispensed: '12000 kWh',
+        chargeRatePerHour: '$25',
+        availableChargers: 3,
+        chargers: [
+            { id: 'CHG011', status: 'Available', type: 'Type 3', powerOutput: '150 kW' },
+            { id: 'CHG012', status: 'Charging', type: 'Type 1', powerOutput: '150 kW' },
+            { id: 'CHG013', status: 'Available', type: 'Type 3', powerOutput: '150 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV006',
+        name: 'Stadium EV Station',
+        location: '303 Sports Dr, Cityville',
+        coordinates: { lat: 34.052235, lng: -118.243683 },
+        image: '/assets/images/station1.jpg',
+        totalPowerDispensed: '8000 kWh',
+        chargeRatePerHour: '$18',
+        availableChargers: 4,
+        chargers: [
+            { id: 'CHG014', status: 'Charging', type: 'Type 2', powerOutput: '50 kW' },
+            { id: 'CHG015', status: 'Available', type: 'Type 2', powerOutput: '50 kW' },
+            { id: 'CHG016', status: 'Available', type: 'Type 3', powerOutput: '50 kW' },
+            { id: 'CHG017', status: 'Charging', type: 'Type 2', powerOutput: '50 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV007',
+        name: 'Office Park EV Station',
+        location: '404 Corporate Rd, Cityville',
+        coordinates: { lat: 51.507351, lng: -0.127758 },
+        image: '/assets/images/station4.jpg',
+        totalPowerDispensed: '5000 kWh',
+        chargeRatePerHour: '$15',
+        availableChargers: 2,
+        chargers: [
+            { id: 'CHG018', status: 'Available', type: 'Type 1', powerOutput: '22 kW' },
+            { id: 'CHG019', status: 'Charging', type: 'Type 2', powerOutput: '22 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV008',
+        name: 'Hotel EV Station',
+        location: '505 Luxury Ln, Cityville',
+        coordinates: { lat: 40.712776, lng: -74.005974 },
+        image: '/assets/images/station2.jpg',
+        totalPowerDispensed: '3500 kWh',
+        chargeRatePerHour: '$22',
+        availableChargers: 1,
+        chargers: [
+            { id: 'CHG020', status: 'Charging', type: 'Type 3', powerOutput: '50 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV009',
+        name: 'Residential EV Station',
+        location: '606 Home St, Cityville',
+        coordinates: { lat: 37.774929, lng: -122.419416 },
+        image: '/assets/images/station1.jpg',
+        totalPowerDispensed: '900 kWh',
+        chargeRatePerHour: '$8',
+        availableChargers: 2,
+        chargers: [
+            { id: 'CHG021', status: 'Available', type: 'Type 2', powerOutput: '7.4 kW' },
+            { id: 'CHG022', status: 'Charging', type: 'Type 2', powerOutput: '7.4 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV010',
+        name: 'Library EV Station',
+        location: '707 Knowledge Rd, Cityville',
+        coordinates: { lat: 48.856613, lng: 2.352222 },
+        image: '/assets/images/station4.jpg',
+        totalPowerDispensed: '6000 kWh',
+        chargeRatePerHour: '$10',
+        availableChargers: 2,
+        chargers: [
+            { id: 'CHG023', status: 'Out of Service', type: 'Type 2', powerOutput: '22 kW' },
+            { id: 'CHG024', status: 'Available', type: 'Type 1', powerOutput: '22 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    },
+    {
+        id: 'EV011',
+        name: 'Park EV Station',
+        location: '808 Green St, Cityville',
+        coordinates: { lat: 51.507351, lng: -0.127758 },
+        image: '/assets/images/station3.jpg',
+        totalPowerDispensed: '1300 kWh',
+        chargeRatePerHour: '$12',
+        availableChargers: 1,
+        chargers: [
+            { id: 'CHG025', status: 'Available', type: 'Type 2', powerOutput: '11 kW' },
+        ],
+        ammenities: ['wifi', 'shopping', 'dining']
+    }
+];
+
+
+export const propertyTypes = [
+    "Commercial Parking Lot",
+    "Shopping Mall",
+    "Office Building",
+    "Residential Building",
+    "Hotel",
+    "Hospital",
+    "University Campus",
+    "Airport",
+    "Gas Station",
+    "Public Park",
+    "Government Building",
+    "Train Station",
+    "Bus Station",
+    "Stadium",
+    "Convention Center",
+    "Warehouse",
+    "Retail Store",
+    "Restaurant",
+    "Fitness Center",
+    "Supermarket",
+    "Apartment Complex",
+    "Golf Course",
+    "Marina",
+    "Movie Theater",
+    "Museum"
+];
+
+export const stationAmmenities = [
+    "wifi",
+    "lodging",
+    "restroom",
+    "shopping",
+    "breakfast",
+    "dining",
+]

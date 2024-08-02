@@ -9,6 +9,10 @@ export default {
     extend: {
       colors: {
         'primary': '#0081AF'
+      },
+      width: {
+        '1/7': "14.2888%",
+        '2/7': "28.5714%"
       }
     },
   },

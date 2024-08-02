@@ -6,6 +6,7 @@ const initialState = {
     error: null,
     loading: false,
     stations: null,
+    stationDetails: null,
 };
 
 
@@ -35,9 +36,12 @@ export const stationsReducer = createSlice({
                     break;
             }
 
+        },
+        setStationDetails: (state, action) => {
+            state.stationDetails = action.payload;
         }
     }
 })
 
-export const { setData, setError, setLoading, setStations } = stationsReducer.actions
+export const { setData, setError, setLoading, setStations, setStationDetails } = stationsReducer.actions
 export default stationsReducer.reducer

@@ -20,8 +20,8 @@ function StatusPill({status}) {
     
   }
   return (
-    <div className={`${colors[status?.code]??colors['Unavailable']} py-1 px-2 my-2 text-xs font-medium text-white rounded-full w-fit`}>
-        {text[status?.name]??'Unavailable'}
+    <div className={`${(colors[status?.code]||colors[status])??colors['Unavailable']} py-1 px-2 my-2 text-xs font-medium text-white rounded-full w-fit`}>
+        {(text[status?.name]||text[status])??'Unavailable'}
     </div>
   )
 }

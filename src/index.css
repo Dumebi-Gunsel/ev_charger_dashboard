@@ -23,3 +23,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+.left-box-shadow{
+  box-shadow: -7px 4px 20px -12px rgba(0, 0, 0, 0.75);
+}

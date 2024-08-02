@@ -12,7 +12,7 @@ function StationsMapModal() {
 
   return (
     <Modal open={modals.some((modal)=>modal.key===modalMap.stationMapModal)} onClose={() => dispatch(popModal())}>
-        <ModalDialog  minWidth={'70vw'} >
+        <ModalDialog  minWidth={'70vw'} sx={{height:'70vh'}} >
             <StationsMap/>
         </ModalDialog>
     </Modal>

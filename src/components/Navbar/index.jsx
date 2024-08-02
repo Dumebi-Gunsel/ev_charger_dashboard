@@ -15,7 +15,8 @@ function Navbar() {
   const {pathname} = useLocation()
   const [navIndex, setNavIndex] = useState(navMap[pathname])
     return (
-        <div className='min-h-screen flex flex-col overflow-y-auto'>
+        <div className='h-screen flex flex-col'>
+          <div className='sticky'>
         <div className='bg-black flex justify-between  px-12 text-white relative'>
       <div className='center-self'>
         <h1 className='font-bold'>
@@ -43,7 +44,8 @@ function Navbar() {
         <HiOutlineBell />
       </div>
     </div> 
-    <div className='flex-1'>
+    </div>
+    <div className='flex-1 overflow-hidden'>
       <Outlet/>
     </div>
        
